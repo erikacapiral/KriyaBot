@@ -38,11 +38,11 @@ const Login = () => {
 
     return (
 
-        <section className='bg-white min-h-screen flex items-center justify-center'>
-            <div className='bg-[#EFA36D] flex rounded-2xl shadow-lg max-w-3xl p-5'>
+        <section className='bg-[#FFFFF] min-h-screen flex items-center justify-center'>
+            <div className='bg-gradient-to-r from-orange-500 to-orange-400 flex rounded-2xl shadow-lg max-w-3xl p-5'>
                 <div className='md:w-1/2 px-16'>
-                    <h1 className='font-bold text-2xl text-[#CC4500]'>Kriya.</h1>
-                    <p className='text-sm mt-4 text-[#CC4500]'>Please login your account</p>
+                    <h2 className='text-center font-bold text-2xl text-[#F5F5F5]'>Kriya.</h2>
+                    <p className='text-sm text-center mt-3 text-[#F5F5F5]'>Please login your account</p>
                     <form onSubmit={handleSubmit} className='flex flex-col gap-4'>
                         <div>
                             {/* <label for="email" class="sr-only">Email address</label> */}

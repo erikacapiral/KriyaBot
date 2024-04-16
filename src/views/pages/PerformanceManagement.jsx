@@ -1,3 +1,4 @@
+import Request_Agent from "../client/components/Request_Agent";
 import Headings from "./Headings";
 import Subheadings from "./Subheadings";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
@@ -7,6 +8,7 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 
 const SeeAllBtn = ({ clickFunction }) => {
     return (
+        
         <button
             onClick={clickFunction}
             className="flex flex-row justify-center items-center"

@@ -1,8 +1,10 @@
 import { useRef, useState } from "react";
-import { Outlet, NavLink } from "react-router-dom";
+import { Outlet, NavLink, useNavigate } from "react-router-dom";
 import Authentication from "../functions/Authentication";
 import axios from "axios";
 import { getInitials } from "../functions/Initial";
+import Bot from "../client/components/Bot";
+
 
 
 const RegularEmployee = () => {
@@ -26,7 +28,14 @@ const RegularEmployee = () => {
     const pulseChevron = useRef(null);
     const BASE_URL = process.env.REACT_APP_BASE_URL;
 
-    const logoutEmployee = () => { };
+    const navigate = useNavigate();
+    const handleLogout = () => {
+        axios.get('http://localhost:8000/logout')
+            .then(res => {
+                navigate('/login')
+            })
+            .catch(err => console.log(err));
+    }
 
     const handlePulseSubNav = () => {
         if (pulseSubNav.current.classList.contains("hidden")) {
@@ -39,6 +48,7 @@ const RegularEmployee = () => {
     };
 
     return (
+        <>
         <div className="drawer md:drawer-open">
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
             <div className="drawer-side">
@@ -739,7 +749,7 @@ const RegularEmployee = () => {
                                     >
                                         <path d="M12 3c-4.963 0-9 4.037-9 9v.001l5-4v3h7v2H8v3l-5-4C3.001 16.964 7.037 21 12 21s9-4.037 9-9-4.037-9-9-9z"></path>
                                     </svg>
-                                    <a onClick={logoutEmployee}>
+                                    <a onClick={handleLogout}>
                                         <span className="text-[#A9A9A9] text-[14px] select-none">Logout</span>
                                     </a>
                                 </div>
@@ -751,8 +761,15 @@ const RegularEmployee = () => {
 
             <div className="drawer-content bg-[#F7F7F7] p-5">
                 <Outlet />
+                {/* <Request_Agent /> */}
+                {/* <ChatBot /> */}
+                <Bot />
             </div>
+            {/* <Request_Agent /> */}
         </div>
+        {/* <Request_Agent /> */}
+        {/* <Chatbot /> */}
+        </>
     );
 };
 
